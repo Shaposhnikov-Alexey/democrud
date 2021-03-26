@@ -1,0 +1,11 @@
+[
+  {
+    "name": "alex",
+    "lastName": "pushkin"
+  },
+  {
+    "name": "leva",
+    "lastName": "tolstoi",
+    "email": "does he even have an email?"
+  }
+]
