@@ -34,31 +34,32 @@ class DemoCrudApplicationTests(
         println(first)
         println(repository.findById(id))
         assert(repository.findById(id).get() == first)
-        for (i in id + 1..personList.count())
-            assert(repository.findById(id).get() != first)
+        for (person in personList)
+            if (person.id != id)
+                assert(person != first)
         assert(repository.getPersonsByName(first.name)!!.any { it == first })
         assert(repository.getPersonsByLastName(first.lastName)!!.any { it == first })
     }
 
-    @Test
-    fun deleteUpdateSave() {
-        val personList = repository.findAll()
-        val name = "John"
-        val lastName = "Doe"
-        val rand = Random(42).nextInt(personList.count())
-        repository.replacePerson(rand, name, lastName)
-        repository.findById(rand).get().let { p ->
-            assert(p.name == name)
-            assert(p.lastName == lastName)
-        }
-        repository.deleteById(rand)
-        assert(repository.findById(rand).isEmpty)
-        assert(repository.savePerson(name, lastName))
-        var index: Int = -1
-        repository.getPersonsByLastName(lastName)?.forEach { if (it.name == name) index = it.id }
-        assert(index != -1)
-        personList.forEach { assert(it.id < index) }
-    }
+//    @Test
+//    fun deleteUpdateSave() {
+//        val personList = repository.findAll()
+//        val name = "John"
+//        val lastName = "Doe"
+//        val rand = Random(42).nextInt(personList.count())
+//        repository.replacePerson(rand, name, lastName)
+//        repository.findById(rand).get().let { p ->
+//            assert(p.name == name)
+//            assert(p.lastName == lastName)
+//        }
+//        repository.deleteById(rand)
+//        assert(repository.findById(rand).isEmpty)
+//        assert(repository.savePerson(name, lastName))
+//        var index: Int = -1
+//        repository.getPersonsByLastName(lastName)?.forEach { if (it.name == name) index = it.id }
+//        assert(index != -1)
+//        personList.forEach { assert(it.id < index) }
+//    }
 
     @Test
     fun checkInitialPersons() {

@@ -17,12 +17,17 @@ repositories {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
-    implementation("org.springframework.boot:spring-boot-starter-web")
+//    implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     implementation("org.postgresql:postgresql")
+//    implementation("com.graphql-java:graphql-spring-boot-starter:5.0.2")
+//    implementation("com.graphql-java:graphiql-spring-boot-starter:5.0.2")
+//    implementation("com.graphql-java:graphql-java-tools:5.2.4")
+    implementation("com.expediagroup", "graphql-kotlin-spring-server", "4.0.0-rc.1")
+
 }
 
 tasks.withType<KotlinCompile> {
